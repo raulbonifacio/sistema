@@ -1,0 +1,16 @@
+extends /layouts/app
+
+block body
+	main.container.all-view-height
+		.row.h-100 
+			aside.col-2.h-100.bg-light.border-right
+				nav.nav.flex-column.text-center
+					block aside
+						a.nav-link(href="")
+							i.fas.fa-chart-line
+							| &nbspDashboard
+
+			section.col.h-100.overflow-auto 
+				.row: .col.my-3: h2
+					block title
+				block section
