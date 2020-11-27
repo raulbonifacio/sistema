@@ -1,10 +1,20 @@
-
 $light: #e5e5e5;
 
 $body-bg: $light;
 $body-color: #595959;
 $border-color: #afafaf;
 
-$font-family-sans-serif:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$input-bg: #000000;
+$input-disabled-bg: $gray-200;
+//$input-color:                           $gray-700 !default;
+$input-color: blue;
+$input-border-color: transparent;
+//$input-border-width:                    $input-btn-border-width !default;
 
-@import '~bootstrap/scss/bootstrap';
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+	sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$enable-rounded: false;
+$enable-gradient: true;
+
+@import "~bootstrap/scss/bootstrap";

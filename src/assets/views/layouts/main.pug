@@ -3,14 +3,47 @@ extends /layouts/app
 block body
 	main.container.all-view-height
 		.row.h-100 
-			aside.col-2.h-100.bg-light.border-right
-				nav.nav.flex-column.text-center
-					block aside
-						a.nav-link(href="")
-							i.fas.fa-chart-line
-							| &nbspDashboard
+			aside.d-none.d-sm-block.col-sm-5.col-md-4.col-lg-3.py-4.h-100.border-left.border-right
+				.h-25.text-center
 
-			section.col.h-100.overflow-auto 
-				.row: .col.my-3: h2
-					block title
+				nav.nav.flex-column.nav-pills
+					a.nav-link.url-path-activable(href="/dashboard")
+						i.fas.fa-chart-line.mr-2
+						| Dashboard
+					a.nav-link.url-path-activable(href="/monthly-situation")
+						i.fas.fa-calendar-alt.mr-2
+						| Situação mensal
+					a.nav-link.url-path-activable(href="/forecasting")
+						i.fas.fa-binoculars.mr-2
+						| Previsão
+					a.nav-link.url-path-activable(href="/revenue")
+						i.fas.fa-dollar-sign.mr-2
+						| Receita
+					a.nav-link.url-path-activable(href="/variable-costs")
+						small: i.fas.fa-credit-card.mr-2
+						| Gastos Variáveis
+					a.nav-link.url-path-activable(href="/fixed-costs")
+						i.fas.fa-file-invoice-dollar.mr-2
+						| Gastos Fixos
+
+			section.col.h-100.overflow-auto.border-right
+
+				.row.border-bottom
+					.col-12.my-4.text-center
+						h2
+							block icon
+							block title
+						p.text-secondary: i
+							block subtitle
+
+				.row.border-bottom
+					.col
+						button#back-button.btn.btn-link
+							small: i.fas.fa-arrow-left.mr-2
+							i Back
+					.col.text-right
+						button#forward-button.btn.btn-link
+							i Forward
+							small: i.fas.fa-arrow-right.ml-2
+
 				block section

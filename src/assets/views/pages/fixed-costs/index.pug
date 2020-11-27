@@ -1,0 +1,31 @@
+extends /layouts/main
+
+block icon
+	i.fas.fa-file-invoice-dollar.mr-2
+
+block title
+	| Gastos fixos
+
+block subtitle
+	| Listagem de gastos fixos.
+
+block section
+	.row
+		.col-md-6.py-3
+			a(href="/fixed-costs/create").btn.btn-primary Adicionar gasto fixo
+				small: i.fas.fa-plus.ml-2
+		.col.md-6.py-3: form(action="/fixed-costs")
+				.input-group
+					input(type="text", name="search", placeholder="Procure por gastos fixos...").form-control
+					.input-group-append
+						button.btn.btn-primary Buscar
+							i.fas.fa-search.ml-2
+
+		.table-responsive: table.table.table-sm
+			tr.text-center
+				th Descrição
+				th Data de vencimento
+				th Situação
+				th("colspan"=3) Ações
+
+
