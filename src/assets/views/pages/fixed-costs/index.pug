@@ -11,21 +11,28 @@ block subtitle
 
 block section
 	.row
-		.col-md-6.py-3
-			a(href="/fixed-costs/create").btn.btn-primary Adicionar gasto fixo
+		.col-12.text-center
+			a(
+				href="/fixed-costs/create"
+				title='Clique aqui para adicionar um novo gasto fixo.'
+				data-toggle='tooltip'
+				data-placement='right'
+			).btn.btn-primary
+				| Adicionar gasto fixo
 				small: i.fas.fa-plus.ml-2
-		.col.md-6.py-3: form(action="/fixed-costs")
+			hr
+
+		.col-12.py-3: form(action="/fixed-costs")
 				.input-group
 					input(type="text", name="search", placeholder="Procure por gastos fixos...").form-control
 					.input-group-append
 						button.btn.btn-primary Buscar
 							i.fas.fa-search.ml-2
 
-		.table-responsive: table.table.table-sm
+		.col-12: .table-responsive: table.table.table-sm.table-borderless
 			tr.text-center
 				th Descrição
 				th Data de vencimento
 				th Situação
-				th("colspan"=3) Ações
-
+				th Ações
 

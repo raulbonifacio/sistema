@@ -1,5 +1,5 @@
 module.exports = {
-	entry: ["./src/assets/js/app.js", "./src/assets/sass/app.scss"],
+	entry: ["./src/assets/js/app.js", "./src/assets/sass/app.scss", "./src/assets/images/favicon.ico"],
 	output: {
 		filename: "main.js",
 		path: __dirname + "/src/public",
@@ -12,13 +12,17 @@ module.exports = {
 				use: ["style-loader", "css-loader", "sass-loader"],
 			},
 			{
-				test: /\.(png|jp?g|svg)$/,
+				test: /\.(png|jp?g|svg|)$/,
 				use: [
 					{
 						loader: "file-loader",
 						options: { outputPath: "images", publicPath: "/images" },
 					},
 				],
+			},
+			{
+				test: /favicon\.*/,
+				use: "file-loader?name=[name].[ext]",
 			},
 			{
 				test: /\.(eot|woff|woff2|ttf)$/,

@@ -3,7 +3,7 @@ extends /layouts/app
 block body
 	main.container.all-view-height
 		.row.h-100 
-			aside.d-none.d-sm-block.col-sm-5.col-md-4.col-lg-3.py-4.h-100.border-left.border-right
+			aside.d-none.d-sm-block.col-sm-5.col-md-4.col-lg-3.py-4.h-100
 				.h-25.text-center
 
 				nav.nav.flex-column.nav-pills
@@ -26,24 +26,22 @@ block body
 						i.fas.fa-file-invoice-dollar.mr-2
 						| Gastos Fixos
 
-			section.col.h-100.overflow-auto.border-right
+			section.col.h-100.overflow-auto
 
-				.row.border-bottom
-					.col-12.my-4.text-center
+				.row.py-2
+					.col
+						button#back-button.btn.btn-link
+							small: i.fas.fa-arrow-left.mr-2
+							| Back
+					.col.text-right
+						button#forward-button.btn.btn-link
+							| Forward
+							small: i.fas.fa-arrow-right.ml-2
+					.col-12.text-center
 						h2
 							block icon
 							block title
 						p.text-secondary: i
 							block subtitle
-
-				.row.border-bottom
-					.col
-						button#back-button.btn.btn-link
-							small: i.fas.fa-arrow-left.mr-2
-							i Back
-					.col.text-right
-						button#forward-button.btn.btn-link
-							i Forward
-							small: i.fas.fa-arrow-right.ml-2
 
 				block section
