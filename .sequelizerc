@@ -1,0 +1,13 @@
+const dotenv = require("dotenv");
+
+dotenv.config();
+
+const path = require("path");
+
+const { SEQUELIZE_MODELS, SEQUELIZE_MIGRATIONS, SEQUELIZE_SEEDERS } = process.env;
+
+module.exports = {
+	"models-path": path.resolve(SEQUELIZE_MODELS),
+	"seeders-path": path.resolve(SEQUELIZE_SEEDERS),
+	"migrations-path": path.resolve(SEQUELIZE_MIGRATIONS),
+};
