@@ -17,15 +17,24 @@ const middlewares = require("./app/web/controllers");
  * This function adds a bodyparser to the application.
  */
 async function bodyParserConfigurer(app) {
-	app.use(express.urlencoded());
+	app.use(express.urlencoded({ extended: true }));
 }
 
 /**
  * This function configures a csrf protection middleware
  * in the application.
  */
-async function csrfConfigurer() {
+async function csrfConfigurer(app) {
 	app.use(csurf({ cookie: false, httpOnly: true }));
+
+	// error handler
+	app.use(function (err, _, res, next) {
+		if (err.code !== "EBADCSRFTOKEN") return next(err);
+
+		// handle CSRF token errors here
+		res.status(403);
+		res.send("You piece of shit.");
+	});
 }
 
 /**
@@ -83,12 +92,12 @@ async function middlewaresConfigurer(app) {
  * to be bootstraped.
  */
 const configurers = [
-	bodyParserConfigurer,
-	csrfConfigurer,
-	pugConfigurer,
 	sessionConfigurer,
+	csrfConfigurer,
+	bodyParserConfigurer,
 	middlewaresConfigurer,
 	controllersConfigurer,
+	pugConfigurer,
 ];
 
 /**
