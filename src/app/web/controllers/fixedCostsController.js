@@ -1,5 +1,7 @@
 
+
 exports.index = (request, response) => { 
+
 	response.render('pages/fixed-costs/index');
 }
 

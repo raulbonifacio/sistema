@@ -3,12 +3,30 @@ const path = require("path");
 const dotenv = require("dotenv");
 const express = require("express");
 const session = require("express-session");
+const csurf = require("csurf");
 
 dotenv.config();
+
+const { PORT, SECRET } = process.env;
 
 const { sequelize } = require("./app/domain/models");
 const controllers = require("./app/web/controllers");
 const middlewares = require("./app/web/controllers");
+
+/**
+ * This function adds a bodyparser to the application.
+ */
+async function bodyParserConfigurer(app) {
+	app.use(express.urlencoded());
+}
+
+/**
+ * This function configures a csrf protection middleware
+ * in the application.
+ */
+async function csrfConfigurer() {
+	app.use(csurf({ cookie: false, httpOnly: true }));
+}
 
 /**
  * This function configures the Pug templating engine in
@@ -39,9 +57,8 @@ async function sessionConfigurer(app) {
 	app.use(
 		session({
 			store,
-			resave: false, // we support the touch method so per the express-session docs this should be set to false
-			proxy: true, // if you do SSL outside of node.
-			secret: "The Secret - Vengeance",
+			resave: false,
+			secret: SECRET,
 			saveUninitialized: false,
 		})
 	);
@@ -65,17 +82,23 @@ async function middlewaresConfigurer(app) {
  * This is a list of the configurers required by the application
  * to be bootstraped.
  */
-const configurers = [pugConfigurer, sessionConfigurer, middlewaresConfigurer, controllersConfigurer];
+const configurers = [
+	bodyParserConfigurer,
+	csrfConfigurer,
+	pugConfigurer,
+	sessionConfigurer,
+	middlewaresConfigurer,
+	controllersConfigurer,
+];
 
 /**
  * This function calls the configurers and starts the application.
  */
 module.exports = async () => {
-
 	try {
 		const app = express();
 
-		const port = process.env.PORT || 8080;
+		const port = PORT || 8080;
 
 		for (configurer of configurers) {
 			await configurer(app);
