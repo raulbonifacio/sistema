@@ -1,9 +1,6 @@
 const path = require("path");
 
-const dotenv = require("dotenv");
 const express = require("express");
-
-dotenv.config();
 
 const { PORT, CONFIGURERS_PATH } = process.env;
 
