@@ -1,6 +1,3 @@
-
-console.log(process.env);
-
 module.exports = {
 	production: {
 		username: process.env.SEQUELIZE_PRODUCTION_USERNAME,

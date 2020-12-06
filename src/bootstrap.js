@@ -5,12 +5,12 @@ const express = require("express");
 const { PORT, CONFIGURERS_PATH } = process.env;
 
 const configurers = [
-	require(path.resolve(CONFIGURERS_PATH, "sessionConfigurer")),
-	require(path.resolve(CONFIGURERS_PATH, "csrfConfigurer")),
-	require(path.resolve(CONFIGURERS_PATH, "bodyParserConfigurer")),
-	require(path.resolve(CONFIGURERS_PATH, "middlewaresConfigurer")),
-	require(path.resolve(CONFIGURERS_PATH, "controllersConfigurer")),
-	require(path.resolve(CONFIGURERS_PATH, "pugConfigurer")),
+	require(path.resolve(CONFIGURERS_PATH, "session-configurer")),
+	require(path.resolve(CONFIGURERS_PATH, "csrf-configurer")),
+	require(path.resolve(CONFIGURERS_PATH, "body-parser-configurer")),
+	require(path.resolve(CONFIGURERS_PATH, "middlewares-configurer")),
+	require(path.resolve(CONFIGURERS_PATH, "controllers-configurer")),
+	require(path.resolve(CONFIGURERS_PATH, "pug-configurer")),
 ];
 
 /**

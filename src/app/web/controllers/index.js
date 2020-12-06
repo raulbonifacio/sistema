@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
-const dashboardController = require("./dashboardController");
-const fixedCostsController = require("./fixedCostsController");
+const dashboardController = require("./dashboard-controller");
+const fixedCostsController = require("./fixed-costs-controller");
 
 const router = Router();
 

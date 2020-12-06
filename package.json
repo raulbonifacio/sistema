@@ -2,9 +2,9 @@
 	"name": "sistema",
 	"version": "1.0.0",
 	"description": "",
-	"main": "src/index.js",
+	"main": "index.js",
 	"scripts": {
-		"start": "npx nodemon -r dotenv/config src/index.js",
+		"start": "npx nodemon -r dotenv/config index.js",
 		"build": "webpack-cli --mode=production",
 		"build-watch": "webpack-cli --mode=development --watch",
 		"test": "echo \"Error: no test specified\" && exit 1"
