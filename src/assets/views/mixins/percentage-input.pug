@@ -1,0 +1,7 @@
+mixin percentage-input(name, value="0.00")
+	label(for=`${name}-input`)
+		block
+	.input-group
+		.input-group-prepend
+			span.input-group-text %
+		input.form-control(id=`${name}-input` type="number", name=`${name}`, step="0.01", min="0.00", value=`${value}`)

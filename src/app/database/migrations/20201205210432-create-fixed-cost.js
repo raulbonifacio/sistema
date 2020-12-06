@@ -7,9 +7,13 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
-			dueDate: {
+			dueDay: {
 				allowNull: false,
 				type: Sequelize.DATE,
+			},
+			businessDay: {
+				allowNull: false,
+				type: Sequelize.BOOLEAN,
 			},
 			description: {
 				allowNull: false,

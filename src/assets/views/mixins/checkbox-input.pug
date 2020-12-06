@@ -1,0 +1,5 @@
+mixin checkbox-input(name, checked=false)
+	.custom-control.custom-checkbox
+		input.custom-control-input(type="checkbox", name="businessDay", id=`${name}-input` checked=checked)
+		label.custom-control-label(for=`${name}-input`)
+			block

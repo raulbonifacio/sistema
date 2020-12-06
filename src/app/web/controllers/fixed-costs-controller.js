@@ -8,3 +8,6 @@ exports.index = (request, response) => {
 exports.create = (request, response) => { 
 	response.render('pages/fixed-costs/create');
 }
+
+exports.store = (request, response) => { 
+}
