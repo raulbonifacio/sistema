@@ -1,13 +1,13 @@
+exports.index = (request, response) => {
+	response.render("pages/fixed-costs/index");
+};
 
+exports.create = (request, response) => {
+	response.render("pages/fixed-costs/create", {
+		csrfToken: request.csrfToken(),
+	});
+};
 
-exports.index = (request, response) => { 
-
-	response.render('pages/fixed-costs/index');
-}
-
-exports.create = (request, response) => { 
-	response.render('pages/fixed-costs/create');
-}
-
-exports.store = (request, response) => { 
-}
+exports.store = (request, response) => {
+	response.send(request.body);
+};

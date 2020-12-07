@@ -13,7 +13,7 @@ async function csrfConfigurer(app) {
 
 		// handle CSRF token errors here
 		res.status(403);
-		res.send("You piece of shit.");
+		res.send(err);
 	});
 }
 

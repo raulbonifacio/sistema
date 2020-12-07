@@ -5,7 +5,7 @@ const csrfTokenMiddleware = require('./csrf-token-middleware');
 
 const router = Router();
 
-router.get('/*', csrfTokenMiddleware);
+router.use(csrfTokenMiddleware);
 
 module.exports = router;
 

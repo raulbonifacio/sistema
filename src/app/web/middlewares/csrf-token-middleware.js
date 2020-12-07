@@ -4,7 +4,6 @@
  */
 function csrfTokenMiddleware(request, response, next) {
 	next();
-	response.locals.csrfToken = request.csrfToken();
 }
 
 module.exports = csrfTokenMiddleware;
