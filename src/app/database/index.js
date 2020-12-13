@@ -4,7 +4,7 @@ const Sequelize = require("sequelize");
 const cls = require("cls-hooked");
 const basename = path.basename(__filename);
 
-const { ENVIRONMENT, SEQUELIZE_CONFIG } = process.env;
+const { ENVIRONMENT, SEQUELIZE_CONFIG, SEQUELIZE_MODELS } = process.env;
 
 const {
 	host,
@@ -27,14 +27,14 @@ let sequelize = new Sequelize(database, username, password, {
 	port,
 });
 
-fs.readdirSync(process.env.SEQUELIZE_MODELS)
+fs.readdirSync(SEQUELIZE_MODELS)
 	.filter(file => {
 		return (
 			file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
 		);
 	})
 	.forEach(file => {
-		const model = require(path.join(process.env.SEQUELIZE_MODELS, file))(
+		const model = require(path.join(SEQUELIZE_MODELS, file))(
 			sequelize,
 			Sequelize.DataTypes
 		);
