@@ -1,6 +1,3 @@
-const { models, transaction } = require("../../models");
-
-const {} = models;
 
 function createFixedExpense(payload) {
 

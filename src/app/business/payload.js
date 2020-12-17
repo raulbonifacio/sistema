@@ -25,7 +25,7 @@ class Payload {
 	 * @param {string|Symbol} name
 	 * @param {any} value
 	 */
-	withData(name, value) {
+	addData(name, value) {
 		this.data[name] = value;
 		return this;
 	}
@@ -43,15 +43,10 @@ class Payload {
 	}
 
 	/**
-	 * @returns {boolean}}
-	 */
-	hasData() {}
-
-	/**
 	 * @param {string|Symbol} name
 	 * @param {any} value
 	 */
-	withError(name, value) {
+	addError(name, value) {
 		this.errors[name] = value;
 		return this;
 	}

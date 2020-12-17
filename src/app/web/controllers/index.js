@@ -1,15 +1,14 @@
-const { Router } = require('express');
+const { Router } = require("express");
 
 const dashboardController = require("./dashboard-controller");
 const fixedExpensesController = require("./fixed-expenses-controller");
 
 const router = Router();
 
-router.get('/dashboard', dashboardController.index);
+router.get("/dashboard", dashboardController.index);
 
-router.get('/fixed-expenses', fixedExpensesController.index);
-router.get('/fixed-expenses/create', fixedExpensesController.create);
-router.post('/fixed-expenses',fixedExpensesController.store); 
+router.get("/fixed-expenses", fixedExpensesController.index);
+router.get("/fixed-expenses/create", fixedExpensesController.create);
+router.get("/fixed-expenses/test", fixedExpensesController.store);
 
 module.exports = router;
-
