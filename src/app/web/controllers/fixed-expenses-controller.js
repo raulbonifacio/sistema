@@ -1,3 +1,6 @@
+
+const facade = require('../../business/facade');
+
 exports.index = async (request, response) => {
 	response.render("pages/fixed-expenses/index");
 };

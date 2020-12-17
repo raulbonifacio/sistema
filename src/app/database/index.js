@@ -34,7 +34,7 @@ fs.readdirSync(SEQUELIZE_MODELS)
 		);
 	})
 	.forEach(file => {
-		const model = require(path.join(SEQUELIZE_MODELS, file))(
+		const model = require(path.resolve(SEQUELIZE_MODELS, file))(
 			sequelize,
 			Sequelize.DataTypes
 		);

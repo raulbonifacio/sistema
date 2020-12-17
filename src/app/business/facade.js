@@ -10,7 +10,7 @@ const facade = {
 const handler = {
 	get: (facade, property) => input => {
 		const payload = new Payload(input, context);
-		Reflect.get(facade, property)(payload);
+		Reflect.get(facade, property)(payload, context);
 		return payload;
 	},
 };

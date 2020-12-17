@@ -13,13 +13,11 @@ class Payload {
 		return this.data;
 	}
 
-	set data() {}
+	set data(data) {}
 
 	get errors() {
 		return this.errors;
 	}
-
-	set errors() {}
 
 	/**
 	 * @param {string|Symbol} name
