@@ -1,4 +1,11 @@
+const Result = require('./result');
 
-module.exports = {
-
+class Context {
+	constructor(input = {}, globals = {}) {
+		this.input = input;
+		this.globals = globals;
+		this.result = new Result();
+	}
 }
+
+module.exports = Context;

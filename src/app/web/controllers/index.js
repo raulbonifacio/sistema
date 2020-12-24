@@ -9,6 +9,6 @@ router.get("/dashboard", dashboardController.index);
 
 router.get("/fixed-expenses", fixedExpensesController.index);
 router.get("/fixed-expenses/create", fixedExpensesController.create);
-router.get("/fixed-expenses/test", fixedExpensesController.store);
+router.get("/fixed-expenses/test", fixedExpensesController.test);
 
 module.exports = router;
