@@ -2,8 +2,8 @@
  * This function returns `true` if the value is not a
  * string.
  */
-function isNotString(value) {
+function isNotAString(value) {
 	return !(typeof value == "string");
 }
 
-module.exports = isNotString;
+module.exports = isNotAString;
