@@ -3,8 +3,8 @@
  * This function returns `true` if the value is not an
  * integer.
  */
-function isNotInteger(value) {
+function isNotAnInteger(value) {
 	return !/^\d+$/.test(value);
 }
 
-module.exports = isNotInteger;
+module.exports = isNotAnInteger;
