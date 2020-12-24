@@ -1,5 +1,5 @@
 
-const facade = require('../../business/facade');
+const {createFixedExpense} = require('../../business');
 
 exports.index = async (request, response) => {
 	response.render("pages/fixed-expenses/index");
@@ -11,6 +11,9 @@ exports.create = async (request, response) => {
 	});
 };
 
-exports.store = async (request, response) => {
-	response.send(request.body);
+exports.test = async (request, response) => {
+
+	const result = await createFixedExpense(request.body);
+
+	response.send(result);
 };

@@ -1,9 +1,8 @@
+const validateFixedExpenseDescription = require('./validate-fixed-expense-description');
 
-function createFixedExpense(payload) {
-
-	return transaction(() => Promise.resolve(payload).then(payload => {
-
-	}));
+function createFixedExpense(context) {
+	return Promise.resolve(context)
+		.then(validateFixedExpenseDescription);
 }
 
 module.exports = createFixedExpense;
