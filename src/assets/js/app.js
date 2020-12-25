@@ -1,7 +1,5 @@
-const $ = require("jquery");
 
-require("bootstrap");
-require("./custom-behavior");
+import 'bootstrap';
 
 require("./../images/favicon.ico");
 require("./../images/favicon-16x16.png");

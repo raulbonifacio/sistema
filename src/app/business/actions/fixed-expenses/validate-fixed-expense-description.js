@@ -1,7 +1,6 @@
 const { isNotAString, isStringEmpty, isStringOutOfRange } = require("../../validators");
 
 function validateFixedExpenseDescription(context) {
-
 	const { description } = context.input;
 	const { errors } = context.result;
 

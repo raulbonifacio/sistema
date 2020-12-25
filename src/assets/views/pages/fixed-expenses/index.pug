@@ -1,7 +1,7 @@
 extends /layouts/main
 
 block icon
-	i.fas.fa-file-invoice-dollar.mr-2
+	i.fas.fa-file-invoice-dollar.me-2
 
 block title
 	| Despesas Fixas
@@ -16,7 +16,7 @@ block section
 				href="/fixed-costs/create"
 			).btn.btn-primary
 				| Adicionar despesa fixa
-				small: i.fas.fa-plus.ml-2
+				small: i.fas.fa-plus.ms-2
 			hr
 
 		.col-12.py-3: form(action="/fixed-costs")
@@ -24,7 +24,7 @@ block section
 				input(type="text", name="search", placeholder="Procure por gastos fixos...").form-control
 				.input-group-append
 					button.btn.btn-primary Buscar
-						i.fas.fa-search.ml-2
+						i.fas.fa-search.ms-2
 
 		.col-12: .table-responsive: table.table.table-sm.table-borderless
 			tr.text-center

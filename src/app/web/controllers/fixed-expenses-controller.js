@@ -6,9 +6,7 @@ exports.index = async (request, response) => {
 };
 
 exports.create = async (request, response) => {
-	response.render("pages/fixed-expenses/create", {
-		csrfToken: request.csrfToken(),
-	});
+	response.render("pages/fixed-expenses/create");
 };
 
 exports.test = async (request, response) => {
