@@ -1,7 +1,15 @@
 mixin percentage-input(name, value="0.00")
-	label.form-label(for=`${name}-input`)
+	label.form-label(for=`${attributes.name}-input`)
 		block
 	.input-group
 		.input-group-prepend
 			span.input-group-text %
-		input.form-control(id=`${name}-input` type="number", name=`${name}`, step="0.01", min="0.00", value=`${value}`)
+
+		input.form-control(
+			id=`${attributes.name}-input`,
+			type="number",
+			name=attributes.name,
+			value=attributes.value
+			min=attributes.min || "0.000",
+		)
+		

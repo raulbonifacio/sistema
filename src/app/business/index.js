@@ -17,6 +17,9 @@ const globals = {
 module.exports = new Proxy(facade, {
 	get: (facade, action) =>
 		facade.hasOwnProperty(action)
-			? async input => Promise.resolve(facade[action](new Context(input, globals))).then(context => context.result)
+			? async input => {
+					const context = new Context(input, globals);
+					return Promise.resolve(facade[action](context)).then(context => context.result);
+			  }
 			: undefined,
 });

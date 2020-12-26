@@ -5,6 +5,7 @@ const isNotAString = require("./is-not-a-string");
 const isNumberOutOfRange = require("./is-number-out-of-range");
 const isStringEmpty = require("./is-string-empty");
 const isStringOutOfRange = require("./is-string-out-of-range");
+const isNotADate = require("./is-not-a-date");
 
 module.exports = {
 	isNotACurrency,
@@ -14,4 +15,5 @@ module.exports = {
 	isNumberOutOfRange,
 	isStringEmpty,
 	isStringOutOfRange,
+	isNotADate,
 };

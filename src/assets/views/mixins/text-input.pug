@@ -1,0 +1,10 @@
+mixin text-input
+	label.form-label(for=`${attributes.name}-input`)
+		block
+	input.form-control(
+		id=`${attributes.name}-input`,
+		type="text",
+		value=attributes.value,
+		name=attributes.name,
+		placeholder=attributes.placeholder
+	)

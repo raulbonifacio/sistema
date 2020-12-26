@@ -5,8 +5,8 @@ exports.index = async (request, response) => {
 	response.render("pages/fixed-expenses/index");
 };
 
-exports.create = async (request, response) => {
-	response.render("pages/fixed-expenses/create");
+exports.new = async (request, response) => {
+	response.render("pages/fixed-expenses/new");
 };
 
 exports.test = async (request, response) => {

@@ -1,0 +1,16 @@
+mixin date-input
+	label.form-label(for=`${attributes.name}-input`)
+		block
+	.input-group
+		.input-group-text Data
+		input.form-control(id=`${attributes.name}-input`, type="number" min="1" max="31" step="1" name=`${attributes.name}Day` value=attributes.day || 1)
+		select.form-select(name=`${attributes.name}Month`)
+			each month, index in [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+				if index == attributes.month
+					option(value=index selected="selected")= month
+				else
+					option(value=index)= month
+		input.form-control(type="number" min="1" step="1" name=`${attributes.name}Year` value=attributes.year || "2000")
+		input.date-input(type="hidden", name=attributes.name, value="")
+
+

@@ -1,0 +1,51 @@
+extends /layouts/main
+
+include /mixins/csrf-token
+include /mixins/help-tooltip
+include /mixins/checkbox-input
+include /mixins/currency-input
+include /mixins/percentage-input
+include /mixins/text-input
+include /mixins/date-input
+
+block icon
+	i.fas.fa-file-invoice-dollar.me-2
+
+block title
+	| Despesas fixas
+
+block subtitle
+	| Criação de despesa fixa
+
+block section
+	.row: .col
+		hr
+		form(action="/fixed-costs" method="POST")
+			.row
+				.col.mb-2
+					+text-input(name="description", placeholder="Here is the description")
+						| Descrição:
+				.col.mb-2
+					+currency-input(name="value")
+						| Valor:
+			.row
+				.col.mb-2
+					+date-input(name="startsAt")
+						| Inicia em:
+				.col.mb-2
+					+date-input(name="endsAt")
+						| Termina em:
+			.row
+				.col.mb-2
+					+date-input(name="dueDay" day="22" month="4" year="1500")
+						| Termina em:
+				.col-12.mb-2
+					+checkbox-input(name="dueDateAtBusinessDay")
+						| Data de vencimento em dia útil
+
+				+csrf-token
+				.col-12
+					button.btn.btn-primary.float-right Salvar custo fixo
+						i.fas.fa-save.ms-2
+
+
