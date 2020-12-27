@@ -8,18 +8,25 @@ function configureDateInputParserOnSubmit() {
 	const forms = Array.from(document.forms);
 
 	forms.forEach(form => {
-		form.addEventListener("submit", event => {
-			const dateInputs = form.querySelectorAll(".date-input");
-
-			for (const dateInput of dateInputs) {
+		form.addEventListener("submit", () => {
+			for (const dateInput of form.querySelectorAll(".date-input")) {
 				const day = form.querySelector(`input[name=${dateInput.getAttribute("name")}Day]`).value;
 				const month = form.querySelector(`select[name=${dateInput.getAttribute("name")}Month] :checked`).value;
 				const year = form.querySelector(`input[name=${dateInput.getAttribute("name")}Year]`).value;
-				dateInput.setAttribute("value", new Date(year, month, day).toString());
+				dateInput.value = new Date(year, month, day).toString();
 			}
-
-			event.preventDefault();
 		});
+	});
+
+	forms.forEach(form => {
+		for (const dateInput of form.querySelectorAll(".date-input")) {
+			const date = new Date(dateInput.value);
+			if (date != "Invalid Date") {
+				form.querySelector(`input[name=${dateInput.getAttribute("name")}Day]`).value = date.getDate();
+				form.querySelector(`select[name=${dateInput.getAttribute("name")}Month] option[value="${date.getMonth()}"]`).setAttribute("selected", "true");
+				form.querySelector(`input[name=${dateInput.getAttribute("name")}Year]`).value = date.getFullYear();
+			}
+		}
 	});
 }
 
@@ -41,4 +48,3 @@ document.addEventListener("DOMContentLoaded", event => {
 	configureDateInputParserOnSubmit();
 	configureForwardAndBackButtons();
 });
-

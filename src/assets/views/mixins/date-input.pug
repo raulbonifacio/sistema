@@ -11,6 +11,5 @@ mixin date-input
 				else
 					option(value=index)= month
 		input.form-control(type="number" min="1" step="1" name=`${attributes.name}Year` value=attributes.year || "2000")
-		input.date-input(type="hidden", name=attributes.name, value="")
-
+		input.date-input(type="hidden", name=attributes.name, value=attributes.value)
 

@@ -7,13 +7,6 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#back-button").on("click", function () {
-		history.back();
-	});
-
-	$("#forward-button").on("click", function () {
-		history.forward();
-	});
 
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip();

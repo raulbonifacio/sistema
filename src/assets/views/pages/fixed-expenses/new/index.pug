@@ -23,7 +23,7 @@ block section
 		form(action="/fixed-costs" method="POST")
 			.row
 				.col.mb-2
-					+text-input(name="description", placeholder="Here is the description")
+					+text-input(name="description")
 						| Descrição:
 				.col.mb-2
 					+currency-input(name="value")
@@ -37,7 +37,7 @@ block section
 						| Termina em:
 			.row
 				.col.mb-2
-					+date-input(name="dueDay" day="22" month="4" year="1500")
+					+date-input(name="dueDay" value="22 april 1500")
 						| Termina em:
 				.col-12.mb-2
 					+checkbox-input(name="dueDateAtBusinessDay")
