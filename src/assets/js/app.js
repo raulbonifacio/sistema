@@ -48,7 +48,7 @@ function configureForwardAndBackButtons() {
 	});
 }
 
-document.addEventListener("DOMContentLoaded", event => {
+document.addEventListener("DOMContentLoaded", () => {
 	configureDateInputParserOnSubmit();
 	configureForwardAndBackButtons();
 });
