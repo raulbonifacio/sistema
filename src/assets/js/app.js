@@ -5,41 +5,45 @@ import "./../images/favicon-32x32.png";
 import "bootstrap";
 
 function configureDateInputParserOnSubmit() {
-	const forms = Array.from(document.forms);
-
-	forms.forEach(form => {
-		form.addEventListener("submit", () => {
-			for (const dateInput of form.querySelectorAll(".date-input")) {
-				const day = form.querySelector(`input[name=${dateInput.getAttribute("name")}Day]`).value;
-				const month = form.querySelector(`select[name=${dateInput.getAttribute("name")}Month] :checked`).value;
-				const year = form.querySelector(`input[name=${dateInput.getAttribute("name")}Year]`).value;
-				dateInput.value = new Date(year, month, day).toString();
-			}
-		});
-	});
-
-	forms.forEach(form => {
+	Array.from(document.forms).forEach(form => {
 		for (const dateInput of form.querySelectorAll(".date-input")) {
+
+			const dayInput = form.querySelector(
+				`input[name=${dateInput.getAttribute("name")}Day]`
+			);
+			const monthInput = form.querySelector(
+				`select[name=${dateInput.getAttribute("name")}Month]`
+			);
+			const yearInput = form.querySelector(
+				`input[name=${dateInput.getAttribute("name")}Year]`
+			);
+
 			const date = new Date(dateInput.value);
+
 			if (date != "Invalid Date") {
-				form.querySelector(`input[name=${dateInput.getAttribute("name")}Day]`).value = date.getDate();
-				form.querySelector(`select[name=${dateInput.getAttribute("name")}Month] option[value="${date.getMonth()}"]`).setAttribute("selected", "true");
-				form.querySelector(`input[name=${dateInput.getAttribute("name")}Year]`).value = date.getFullYear();
+				dayInput.value = date.getDate();
+				monthInput
+					.querySelector(`option[value="${date.getMonth()}"]`)
+					.setAttribute("selected", "true");
+				yearInput.value = date.getFullYear();
 			}
+
+			form.addEventListener("submit", () => {
+				const day = dayInput.value;
+				const month = monthInput.querySelector(` :checked`).value;
+				const year = yearInput.value;
+				dateInput.value = new Date(year, month, day).toString();
+			});
 		}
 	});
 }
 
 function configureForwardAndBackButtons() {
-	const forward = document.querySelector("#forward-button");
-
-	forward.addEventListener("click", () => {
+	document.querySelector("#forward-button").addEventListener("click", () => {
 		history.forward();
 	});
 
-	const back = document.querySelector("#back-button");
-
-	back.addEventListener("click", () => {
+	document.querySelector("#back-button").addEventListener("click", () => {
 		history.back();
 	});
 }
