@@ -2,7 +2,7 @@
  * This middleware provides months to the response template and
  * also handles international names.
  */
-function monthsProviderMiddleware(_, response, next) {
+function monthsMiddleware(_, response, next) {
 	next();
 	//TODO:Implement translation.
 	response.locals.months = [
@@ -21,4 +21,4 @@ function monthsProviderMiddleware(_, response, next) {
 	];
 }
 
-module.exports = monthsProviderMiddleware;
+module.exports = monthsMiddleware;

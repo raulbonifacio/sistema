@@ -2,8 +2,8 @@ module.exports = {
 	entry: ["./src/assets/js/app.js", "./src/assets/sass/app.scss", "./src/assets/images/favicon.ico"],
 	output: {
 		filename: "main.js",
-		path: __dirname + "/src/public",
-		publicPath: __dirname + "/src/public",
+		path: __dirname + "/src/public/assets",
+		publicPath: __dirname + "/src/public/assets",
 	},
 	module: {
 		rules: [
@@ -16,7 +16,7 @@ module.exports = {
 				use: [
 					{
 						loader: "file-loader",
-						options: { outputPath: "images", publicPath: "/images" },
+						options: { outputPath: "images", publicPath: "/assets/images" },
 					},
 				],
 			},
@@ -29,7 +29,7 @@ module.exports = {
 				use: [
 					{
 						loader: "file-loader",
-						options: { outputPath: "fonts", publicPath: "/fonts" },
+						options: { outputPath: "fonts", publicPath: "/assets/fonts" },
 					},
 				],
 			},

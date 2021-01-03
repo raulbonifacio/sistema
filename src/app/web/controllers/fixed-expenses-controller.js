@@ -1,16 +1,18 @@
+const { createFixedExpense } = require("../../business");
 
-const {createFixedExpense} = require('../../business');
-
-exports.index = async (request, response) => {
+exports.index = async (_request, response) => {
 	response.render("pages/fixed-expenses/index");
 };
 
-exports.new = async (request, response) => {
+exports.new = async (_request, response) => {
 	response.render("pages/fixed-expenses/new");
 };
 
-exports.test = async (request, response) => {
+exports.store = async (_request, response) => {
+	response.redirectBack();
+};
 
+exports.test = async (request, response) => {
 	const result = await createFixedExpense(request.body);
 
 	response.send(result);

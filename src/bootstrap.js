@@ -8,8 +8,7 @@ const configurers = [
 	require(path.resolve(CONFIGURERS_PATH, "body-parser-configurer")),
 	require(path.resolve(CONFIGURERS_PATH, "session-configurer")),
 	require(path.resolve(CONFIGURERS_PATH, "csrf-configurer")),
-	require(path.resolve(CONFIGURERS_PATH, "middlewares-configurer")),
-	require(path.resolve(CONFIGURERS_PATH, "controllers-configurer")),
+	require(path.resolve(CONFIGURERS_PATH, "routes-configurer")),
 	require(path.resolve(CONFIGURERS_PATH, "pug-configurer")),
 ];
 
