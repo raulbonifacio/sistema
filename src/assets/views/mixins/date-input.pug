@@ -5,7 +5,7 @@ mixin date-input
 		.input-group-text Data
 		input.form-control(id=`${attributes.name}-input`, type="number" min="1" max="31" step="1" name=`${attributes.name}Day` value=attributes.day || 1)
 		select.form-select(name=`${attributes.name}Month`)
-			each month, index in [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+			each month, index in months 
 				if index == attributes.month
 					option(value=index selected="selected")= month
 				else

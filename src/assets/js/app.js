@@ -2,12 +2,11 @@ import "./../images/favicon.ico";
 import "./../images/favicon-16x16.png";
 import "./../images/favicon-32x32.png";
 
-import "bootstrap";
+import "bootstrap/dist/js/bootstrap.bundle";
 
 function configureDateInputParserOnSubmit() {
 	Array.from(document.forms).forEach(form => {
 		for (const dateInput of form.querySelectorAll(".date-input")) {
-
 			const dayInput = form.querySelector(
 				`input[name=${dateInput.getAttribute("name")}Day]`
 			);

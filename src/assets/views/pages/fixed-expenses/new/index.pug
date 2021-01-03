@@ -1,12 +1,12 @@
 extends /layouts/main
 
 include /mixins/csrf-token
-include /mixins/help-tooltip
 include /mixins/checkbox-input
 include /mixins/currency-input
 include /mixins/percentage-input
 include /mixins/text-input
 include /mixins/date-input
+include /mixins/number-input
 
 block icon
 	i.fas.fa-file-invoice-dollar.me-2
@@ -23,7 +23,7 @@ block section
 		form(action="/fixed-costs" method="POST")
 			.row
 				.col.mb-2
-					+text-input(name="description", placeholder="...")
+					+text-input(name="description" placeholder="Description")
 						| Descrição:
 				.col.mb-2
 					+currency-input(name="value")
@@ -36,15 +36,17 @@ block section
 					+date-input(name="endsAt")
 						| Termina em:
 			.row
-				.col.mb-2
-					+date-input(name="dueDay" value="22 april 1500")
-						| Termina em:
-				.col-12.mb-2
+				.col-2.md-2
+					+number-input(name="dueDay" min=1 max=31 value=1)
+						| Dia do vencimento:
+			.row
+				.col.my-2
 					+checkbox-input(name="dueDateAtBusinessDay")
 						| Data de vencimento em dia útil
 
 				+csrf-token
-				.col-12
+
+				.col-12.mb-2
 					button.btn.btn-primary.float-right Salvar custo fixo
 						i.fas.fa-save.ms-2
 

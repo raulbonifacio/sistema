@@ -1,0 +1,12 @@
+mixin number-input
+	label.form-label(for=`${attributes.name}-input`)
+		block
+	input.form-control(
+		id=`${attributes.name}-input`,
+		type="number",
+		value=attributes.value,
+		name=attributes.name,
+		min=attributes.min,
+		max=attributes.max,
+		placeholder=attributes.placeholder
+	)
