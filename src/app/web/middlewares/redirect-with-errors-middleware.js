@@ -3,7 +3,7 @@
  * object. It requires the flashedDataMiddleware to be setup first.
  */
 
-function redirectBackMiddleware(request, response, next) {
+function redirectWithErrorsMiddleware(request, response, next) {
 	console.log(request);
 	const { previousPath = "/" } = request.flashed;
 
@@ -16,4 +16,4 @@ function redirectBackMiddleware(request, response, next) {
 	next();
 }
 
-module.exports = redirectBackMiddleware;
+module.exports = redirectWithErrorsMiddleware;

@@ -12,15 +12,15 @@ block icon
 	i.fas.fa-file-invoice-dollar.me-2
 
 block title
-	| Despesas fixas
+	| Despesas Fixas
 
 block subtitle
-	| Criação de despesa fixa
+	| Criação de despesa fixa.
 
 block section
 	.row: .col
 		hr
-		form(action="/fixed-expenses" method="POST")
+		form(action="/fixed-costs" method="POST")
 			.row
 				.col.mb-2
 					+text-input(name="description" placeholder="Description")
