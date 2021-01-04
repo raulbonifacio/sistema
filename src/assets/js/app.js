@@ -47,7 +47,16 @@ function configureForwardAndBackButtons() {
 	});
 }
 
+function configurePathActivable() {
+	Array.from(document.querySelectorAll(".path-activable"))
+		.filter(activable =>
+			window.location.pathname.startsWith(activable.getAttribute("href"))
+		)
+		.forEach(activable => activable.classList.add("active"));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 	configureDateInputParserOnSubmit();
 	configureForwardAndBackButtons();
+	configurePathActivable();
 });
