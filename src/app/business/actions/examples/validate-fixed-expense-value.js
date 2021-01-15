@@ -1,8 +1,12 @@
-const { isNotANumber, isNotACurrency, isNumberOutOfRange } = require("../../validators");
+const {
+	isNotANumber,
+	isNotACurrency,
+	isNumberOutOfRange,
+} = require("../../validators");
 
 function validateFixedExpenseValue(context) {
-	const { value } = context.input;
-	const { errors } = context.result;
+const { value } = context.input;
+const { errors } = context.result;
 
 	if (isNotANumber(value)) {
 		errors.value = "The value is not a number.";
@@ -16,3 +20,5 @@ function validateFixedExpenseValue(context) {
 }
 
 module.exports = validateFixedExpenseValue;
+
+

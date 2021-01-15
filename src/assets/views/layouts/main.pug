@@ -7,25 +7,29 @@ block body
 				.h-25.text-center
 
 				nav.nav.flex-column.nav-pills
-					a.nav-link.url-path-activable(href="/dashboard")
+					a.nav-link.path-activable(href="/dashboard")
 						i.fas.fa-chart-line.me-2
 						| Dashboard
-					a.nav-link.url-path-activable(href="/monthly-situation")
+					a.nav-link.path-activable(href="/monthly-situation")
 						i.fas.fa-calendar-alt.me-2
 						| Situação mensal
-					a.nav-link.url-path-activable(href="/forecasting")
+					a.nav-link.path-activable(href="/forecasting")
 						i.fas.fa-binoculars.me-2
 						| Previsão
-					a.nav-link.url-path-activable(href="/revenue")
+					a.nav-link.path-activable(href="/revenue")
 						i.fas.fa-dollar-sign.me-2
 						| Receita
-					a.nav-link.url-path-activable(href="/variable-expenses")
+					a.nav-link.path-activable(href="/variable-expenses")
 						small: i.fas.fa-credit-card.me-2
 						| Despesas Variáveis
-					a.nav-link.url-path-activable(href="/fixed-expenses")
+					a.nav-link.path-activable(href="/fixed-expenses")
 						i.fas.fa-file-invoice-dollar.me-2
 						| Despesas Fixas
- 
+					hr
+					a.nav-link.path-activable(href="/fixed-expenses")
+						i.fas.fa-file-invoice-dollar.me-2
+						| Administrar
+
 			section.col.h-100.overflow-auto
 
 				.row.py-2
