@@ -8,7 +8,7 @@
 		"build": "webpack-cli --mode=production",
 		"build-watch": "webpack-cli --mode=development --watch",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"interactive": "node -r dotenv/config -e \"const $ = require('./src/app/business/facade');\" -i --experimental-repl-await"
+		"interactive": "node -r dotenv/config -e \"const $ = require('./src/app/business');\" -i --experimental-repl-await"
 	},
 	"keywords": [],
 	"author": "",
