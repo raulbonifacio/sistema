@@ -4,7 +4,7 @@ const Sequelize = require("sequelize");
 const cls = require("cls-hooked");
 const basename = path.basename(__filename);
 
-const { ENVIRONMENT, SEQUELIZE_CONFIG, SEQUELIZE_MODELS } = process.env;
+const { SEQUELIZE_CONFIG, SEQUELIZE_MODELS } = process.env;
 
 const {
 	host,
@@ -13,7 +13,7 @@ const {
 	password,
 	dialect,
 	port,
-} = require(path.resolve(SEQUELIZE_CONFIG))[ENVIRONMENT];
+} = require(path.resolve(SEQUELIZE_CONFIG));
 
 const db = {};
 

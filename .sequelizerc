@@ -1,6 +1,7 @@
 const path = require("path");
 
 const dotenv = require("dotenv");
+
 dotenv.config();
 
 const {
@@ -11,7 +12,7 @@ const {
 } = process.env;
 
 module.exports = {
-	config: path.resolve(SEQUELIZE_CONFIG),
+	"config": path.resolve(SEQUELIZE_CONFIG),
 	"models-path": path.resolve(SEQUELIZE_MODELS),
 	"seeders-path": path.resolve(SEQUELIZE_SEEDERS),
 	"migrations-path": path.resolve(SEQUELIZE_MIGRATIONS),
