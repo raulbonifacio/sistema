@@ -1,11 +1,13 @@
 const { isNotADate } = require("../../validators");
 
 function validateFixedExpenseStartsAt(context) {
-	const { startsAt } = context.input;
-	const { errors } = context.result;
+
+	const { startsAt } = input;
+	const { errors } = result;
+	const { isNotADate } = globals.validators;
 
 	if (isNotADate(startsAt)) {
-		errors.startsAt = "The starts at field is not a date.";
+		errors.set("startsAt", "The starts at field is not a date.");
 	}
 
 	return context;

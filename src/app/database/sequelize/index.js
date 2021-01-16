@@ -4,7 +4,11 @@ const Sequelize = require("sequelize");
 const cls = require("cls-hooked");
 const basename = path.basename(__filename);
 
-const { SEQUELIZE_CONFIG, SEQUELIZE_MODELS } = process.env;
+const {
+	SEQUELIZE_CONFIG,
+	SEQUELIZE_MODELS,
+	SEQUELIZE_CLS_NAMESPACE,
+} = process.env;
 
 const {
 	host,
@@ -17,7 +21,7 @@ const {
 
 const db = {};
 
-const namespace = cls.createNamespace(process.env.SEQUELIZE_CLS_NAMESPACE);
+const namespace = cls.createNamespace(SEQUELIZE_CLS_NAMESPACE);
 
 Sequelize.useCLS(namespace);
 
@@ -50,8 +54,8 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 db.transaction = scope =>
-	cls.getNamespace(process.env.SEQUELIZE_CLS_NAMESPACE).get("transaction")
-		? scope()
-		: sequelize.transaction(scope);
+	cls.getNamespace(SEQUELIZE_CLS_NAMESPACE).get("transaction")
+		? scope(db)
+		: sequelize.transaction(scope.bind(null, db));
 
 module.exports = db;

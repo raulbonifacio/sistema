@@ -1,15 +1,14 @@
-const path = require("path");
 
 const express = require("express");
 
-const { PORT, CONFIGURERS_PATH } = process.env;
+const { PORT } = process.env;
 
 const configurers = [
-	require(path.resolve(CONFIGURERS_PATH, "body-parser-configurer")),
-	require(path.resolve(CONFIGURERS_PATH, "session-configurer")),
-	require(path.resolve(CONFIGURERS_PATH, "csrf-configurer")),
-	require(path.resolve(CONFIGURERS_PATH, "routes-configurer")),
-	require(path.resolve(CONFIGURERS_PATH, "pug-configurer")),
+	require("./configurers/body-parser-configurer"),
+	require("./configurers/session-configurer"),
+	require("./configurers/csrf-configurer"),
+	require("./configurers/routes-configurer"),
+	require("./configurers/pug-configurer"),
 ];
 
 /**
@@ -26,6 +25,7 @@ module.exports = async () => {
 		}
 
 		app.listen(port, () => console.log(`Listening to localhost:${port}`));
+
 	} catch (error) {
 		console.error(error);
 	}

@@ -1,15 +1,15 @@
 const Context = require("./context");
-const { models, transaction } = require("../database");
-
-const createFixedExpense = require("./actions/fixed-expenses/create-fixed-expense");
+const validators = require("./validators");
+const { models, transaction } = require("../database/sequelize");
 
 const facade = {
-	createFixedExpense,
+
 };
 
 const globals = {
 	applicationName: "sistema",
 	facade,
+	validators,
 	models,
 	transaction,
 };

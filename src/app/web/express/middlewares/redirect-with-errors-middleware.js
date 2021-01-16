@@ -4,7 +4,7 @@
  */
 
 function redirectWithErrorsMiddleware(request, response, next) {
-	console.log(request);
+
 	const { previousPath = "/" } = request.flashed;
 
 	response.redirectBack = function () {

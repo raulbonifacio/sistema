@@ -9,6 +9,16 @@ function createFixedExpense(context) {
 		.then(validateFixedExpenseValue)
 		.then(validateFixedExpenseDueAtBusinessDay)
 		.then(validateFixedExpenseStartsAt);
+
+	const { transaction } = context.globals;
+
+	if(Object.keys(errors).length) return context;
+
+	const user = await transaction(({ User }) => await User.build(context.input));
+
+	context.result.data.set("user", user);
+
+	return context;
 }
 
 module.exports = createFixedExpense;

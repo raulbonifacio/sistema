@@ -8,7 +8,6 @@ function flashedDataMiddleware(request, response, next) {
 
 	response.locals.flashed = flashed;
 	response.flash = function (data) {
-		console.log(data);
 		request.session[flashedDataSymbol] = {
 			...data,
 			...request.session[flashedDataSymbol],
