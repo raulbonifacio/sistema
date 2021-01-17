@@ -1,12 +1,10 @@
-const facade = require("./facade");
+const facade = require("./utils/facade");
 
-const { models, transaction } = require("../database/sequelize");
+const { transaction, ...models } = require("../database/sequelize");
+const getUserWithCredentials = require("./actions/users/get-user-with-credentials");
 
 const actions = {
-
-	createSomething(context) {
-		return context;
-	},
+	getUserWithCredentials,
 };
 
 const globals = {

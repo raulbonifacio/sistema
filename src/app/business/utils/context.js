@@ -1,4 +1,4 @@
-const Result = require('./result');
+const Result = require("./result");
 
 class Context {
 	constructor(input = {}, globals = {}) {

@@ -1,3 +1,4 @@
+
 const Context = require("./context");
 
 function facade(actions, globals) {
@@ -7,9 +8,13 @@ function facade(actions, globals) {
 				return async input => {
 					const context = new Context(input, globals);
 
-					return Promise.resolve(actions[action](context)).then(
-						context => context.result
-					);
+					const received = await Promise.resolve(actions[action](context));
+
+					if (received && context === received) {
+						return context.result;
+					} else {
+						throw new Error("The context was not received back");
+					}
 				};
 			}
 
