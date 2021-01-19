@@ -6,9 +6,9 @@ const {
 
 const MAX_EMAIL_LENGTH = 255;
 
-function validateUserEmail(context) {
-	const { email } = context.input;
-	const { errors } = context.result;
+function validateUserEmail({input, result}, next) {
+	const { email } = input;
+	const { errors } = result;
 
 	if (isNotAString(email)) {
 		errors.email = "The email is not a string.";
@@ -18,7 +18,7 @@ function validateUserEmail(context) {
 		errors.email = "The email is not valid.";
 	}
 
-	return context; 
+	return next();
 }
 
 module.exports = validateUserEmail;

@@ -1,17 +1,9 @@
-const validateUserPassword = require("./validate-user-password");
-const validateUserEmail = require("./validate-user-email");
+async function getUserWithCredentials({ globals, result, input }, next) {
+	const { email, password } = input;
+	const { errors, hasErrors, data } = result;
+	const { User } = globals.models;
 
-async function getUserWithCredentials(context) {
-
-	context = await Promise.resolve(context)
-		.then(validateUserPassword)
-		.then(validateUserEmail);
-
-	const { errors, hasErrors, data } = context.result;
-	const { User } = context.globals.models;
-	const { email, password } = context.input;
-
-	if (hasErrors) return context;
+	if (hasErrors) return next();
 
 	const user = await User.findOne({
 		where: { email, password },
@@ -23,7 +15,7 @@ async function getUserWithCredentials(context) {
 		errors.general = "Invalid credentials.";
 	}
 
-	return context;
+	await next();
 }
 
 module.exports = getUserWithCredentials;

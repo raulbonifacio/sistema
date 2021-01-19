@@ -1,15 +1,23 @@
 const facade = require("./utils/facade");
+const pipeline = require("./utils/pipeline");
+
+const getUserWithCredentials = require("./actions/users/get-user-with-credentials");
+const validateUserEmail = require("./actions/users/validate-user-email");
+const validateUserPassword = require("./actions/users/validate-user-password");
 
 const { transaction, ...models } = require("../database/sequelize");
-const getUserWithCredentials = require("./actions/users/get-user-with-credentials");
-
-const actions = {
-	getUserWithCredentials,
-};
 
 const globals = {
 	models,
 	transaction,
+};
+
+const actions = {
+	getUserByCredentials: pipeline(
+		validateUserEmail,
+		validateUserPassword,
+		getUserWithCredentials
+	),
 };
 
 const businessFacade = facade(actions, globals);
