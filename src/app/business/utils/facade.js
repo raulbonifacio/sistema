@@ -1,24 +1,16 @@
-
 const Context = require("./context");
 
 function facade(actions, globals) {
-	return new Proxy(actions, {
+	  return new Proxy(actions, {
 		get(actions, action) {
-			if (actions.hasOwnProperty(action)) {
-				return async input => {
-					const context = new Context(input, globals);
 
-					const received = await Promise.resolve(actions[action](context));
+			const targetAction = actions[action];
 
-					if (received && context === received) {
-						return context.result;
-					} else {
-						throw new Error("The context was not received back");
-					}
-				};
-			}
+			if (typeof targetAction != "function")
+				throw `Invalid action: ${action} is not a function.`;
 
-			throw new Error(`Action: '${action}'is not available in the facade`);
+			return input => Promise.resolve(targetAction(new Context(input, globals)))
+				.then(context => context.result);
 		},
 	});
 }

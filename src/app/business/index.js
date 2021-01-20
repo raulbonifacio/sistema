@@ -13,11 +13,14 @@ const globals = {
 };
 
 const actions = {
-	getUserByCredentials: pipeline(
-		validateUserEmail,
-		validateUserPassword,
-		getUserWithCredentials
+
+	getUserWithCredentials: pipeline(
+		validateUserEmail(),
+		validateUserPassword(),
+		getUserWithCredentials(), 
 	),
+
+
 };
 
 const businessFacade = facade(actions, globals);

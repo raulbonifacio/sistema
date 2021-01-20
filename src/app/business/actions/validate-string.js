@@ -17,33 +17,40 @@ const defaultOptions = {
 	mustBeAnEmail: false,
 };
 
-function validateString(context) {
+function validateString(customOptions) {
 
-	const options = { ...defaultOptions, ...this};
-	const { errors } = context.result;
-	const { [options.field]: value } = context.input;
+	return (context, next) => {
 
-	let error = "";
+		if(!customOptions.field) throw "The string validation needs a field.";
 
-	if (isNotAString(value)) {
-		error = `The ${options.label} is not a string.`;
-	} else if (options.mustBeInRange && isStringOutOfRange(value, options.min, options.max)) {
-		error = `The ${options.label} must be between ${options.min} and ${options.max} charcters.`;
-	} else if (options.mustHaveSpecialCharacters && isStringWithoutSpecialCharacters(value)) {
-		error = `The ${options.label} must include special characters`;
-	} else if (options.mustHaveNumbers && isStringWithoutNumbers(value)) {
-		error = `The ${options.label} must include numbers.`;
-	} else if (options.mustHaveDifferentCases && isStringWithoutDifferentCases(value)) {
-		error = `The ${options.label} must have different cases.`;
-	} else if (options.mustBeAnEmail && isStringNotAnEmail(value)) { 
-		error = `The ${options.label} must be an e-mail.`;
-	}
+		const options = { ...defaultOptions, ...customOptions };
+		const { errors } = context.result;
+		const { [options.field]: value } = context.input;
 
-	if(error) { 
-		errors[options.field] = error; 
-	}
+		const label = options.label || options.field;
 
-	return context;
+		let error = "";
+
+		if (isNotAString(value)) {
+			error = `The ${label} is not a string.`;
+		} else if ( options.mustBeInRange && isStringOutOfRange(value, options.min, options.max)) {
+			error = `The ${label} must be between ${options.min} and ${options.max} charcters.`;
+		} else if ( options.mustHaveSpecialCharacters && isStringWithoutSpecialCharacters(value)) {
+			error = `The ${label} must include special characters`;
+		} else if (options.mustHaveNumbers && isStringWithoutNumbers(value)) {
+			error = `The ${label} must include numbers.`;
+		} else if ( options.mustHaveDifferentCases && isStringWithoutDifferentCases(value)) {
+			error = `The ${label} must have different cases.`;
+		} else if (options.mustBeAnEmail && isStringNotAnEmail(value)) {
+			error = `The ${label} must be an e-mail.`;
+		}
+
+		if (error) {
+			errors[options.field] = error;
+		}
+
+		return next();
+	};
 }
 
 module.exports = validateString;
