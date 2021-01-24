@@ -1,14 +1,15 @@
 function pipeline(...middlewares) {
+	if (!middlewares.every(middleware => typeof middleware == "function"))
+		throw new Error("All middlewares in the pipeline should be functions.");
 
-	return async context => {
-
+	return (context, followUp = function () {}) => {
 		const stack = [...middlewares];
 
 		let previousMiddleware = null;
 
-		const next = async middleware => {
+		const next = middleware => {
 			if (previousMiddleware === middleware)
-				throw "Called same middleware twice";
+				throw new Error("Called same middleware twice.");
 
 			previousMiddleware = middleware;
 
@@ -17,9 +18,10 @@ function pipeline(...middlewares) {
 			}
 		};
 
-		await next(stack.shift());
+		if (typeof followUp != "function")
+			throw new Error(`The followUp must be a function. Received: ${followUp}.`);
 
-		return context;
+		return Promise.resolve(next(stack.shift())).then(followUp).then(() => context);
 	};
 }
 
