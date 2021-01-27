@@ -3,7 +3,7 @@
  * is not a date.
  */
 function isNotADate(value) {
-	return new Date(value) == "Invalid Date";
+	return new Date(value || "" ) == "Invalid Date";
 }
 
 module.exports = isNotADate;

@@ -1,4 +1,5 @@
 function pipeline(...middlewares) {
+
 	if (!middlewares.every(middleware => typeof middleware == "function"))
 		throw new Error("All middlewares in the pipeline should be functions.");
 
@@ -9,12 +10,12 @@ function pipeline(...middlewares) {
 
 		const next = middleware => {
 			if (previousMiddleware === middleware)
-				throw new Error("Called same middleware twice.");
+				throw new Error("The pipeline called same middleware twice.");
 
 			previousMiddleware = middleware;
 
 			if (middleware) {
-				return middleware(context, () => next(stack.shift()));
+				return middleware(context, (stop) => stop || next(stack.shift()));
 			}
 		};
 

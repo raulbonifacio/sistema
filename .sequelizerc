@@ -1,19 +1,6 @@
-const path = require("path");
-
-const dotenv = require("dotenv");
-
-dotenv.config();
-
-const {
-	SEQUELIZE_MODELS,
-	SEQUELIZE_MIGRATIONS,
-	SEQUELIZE_SEEDERS,
-	SEQUELIZE_CONFIG,
-} = process.env;
-
 module.exports = {
-	"config": path.resolve(SEQUELIZE_CONFIG),
-	"models-path": path.resolve(SEQUELIZE_MODELS),
-	"seeders-path": path.resolve(SEQUELIZE_SEEDERS),
-	"migrations-path": path.resolve(SEQUELIZE_MIGRATIONS),
+	"config": "sequelize-config.js", 
+	"models-path": "src/app/database/sequelize/models",
+	"seeders-path": "src/app/database/sequelize/seeders",
+	"migrations-path": "src/app/database/sequelize/migrations",
 };
