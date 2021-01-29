@@ -1,10 +1,10 @@
-const Result = require("./result");
+const Output = require("./output");
 
 class Context {
 	constructor(input = {}, globals = {}) {
 		this.input = input;
 		this.globals = globals;
-		this.result = new Result();
+		this.result = new Output();
 	}
 }
 
