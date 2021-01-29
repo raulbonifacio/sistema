@@ -1,3 +1,4 @@
+require("dotenv/config");
 module.exports = {
 	username: process.env.SEQUELIZE_USERNAME,
 	password: process.env.SEQUELIZE_PASSWORD,
