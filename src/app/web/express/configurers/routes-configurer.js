@@ -14,10 +14,9 @@ async function routesConfigurer(app) {
 	
 	router.use(middlewares);
 	router.use(controllers);
+	router.use("/assets", static("src/public"));
 
-	app.use(APP_PREFIX, router); 
-
-	app.use(static("src/public"));
+	app.use(router); 
 
 	return app;
 }
