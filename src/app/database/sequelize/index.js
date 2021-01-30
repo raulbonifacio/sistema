@@ -4,8 +4,6 @@ const Sequelize = require("sequelize");
 const cls = require("cls-hooked");
 const basename = path.basename(__filename);
 
-const { SEQUELIZE_MODELS, SEQUELIZE_CLS_NAMESPACE } = process.env;
-
 const {
 	host,
 	database,
@@ -15,9 +13,7 @@ const {
 	port,
 } = require("./config");
 
-const MODELS = path.join(__dirname, "/models");
-
-const db = {};
+const { SEQUELIZE_CLS_NAMESPACE } = process.env;
 
 const namespace = cls.createNamespace(SEQUELIZE_CLS_NAMESPACE);
 
@@ -28,6 +24,8 @@ let sequelize = new Sequelize(database, username, password, {
 	dialect,
 	port,
 });
+
+const MODELS = path.join(__dirname, "/models");
 
 fs.readdirSync(MODELS)
 	.filter(file => {
@@ -40,20 +38,18 @@ fs.readdirSync(MODELS)
 			sequelize,
 			Sequelize.DataTypes
 		);
-		db[model.name] = model;
+
+		exports[model.name] = model;
 	});
 
-Object.keys(db).forEach(modelName => {
-	if (db[modelName].associate) {
-		db[modelName].associate(db);
-	}
+Object.keys(exports).forEach(modelName => {
+	exports[modelName].associate?.(exports);
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-db.transaction = scope =>
+exports.sequelize = sequelize;
+exports.Sequelize = Sequelize;
+exports.transaction = scope =>
 	cls.getNamespace(SEQUELIZE_CLS_NAMESPACE).get("transaction")
-		? scope(db)
-		: sequelize.transaction(scope.bind(null, db));
+		? scope(exports)
+		: sequelize.transaction(scope.bind(null, exports));
 
-module.exports = db;
