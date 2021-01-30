@@ -25,6 +25,8 @@ let sequelize = new Sequelize(database, username, password, {
 	port,
 });
 
+exports.models = {};
+
 const MODELS = path.join(__dirname, "/models");
 
 fs.readdirSync(MODELS)
@@ -39,11 +41,11 @@ fs.readdirSync(MODELS)
 			Sequelize.DataTypes
 		);
 
-		exports[model.name] = model;
+		exports.models[model.name] = model;
 	});
 
-Object.keys(exports).forEach(modelName => {
-	exports[modelName].associate?.(exports);
+Object.keys(exports.models).forEach(modelName => {
+	exports.models[modelName].associate?.(exports.models);
 });
 
 exports.sequelize = sequelize;
@@ -52,4 +54,3 @@ exports.transaction = scope =>
 	cls.getNamespace(SEQUELIZE_CLS_NAMESPACE).get("transaction")
 		? scope(exports)
 		: sequelize.transaction(scope.bind(null, exports));
-
