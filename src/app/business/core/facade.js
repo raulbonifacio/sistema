@@ -18,9 +18,10 @@ function facade(actions = {}, globals = {}) {
 			if (typeof actions[action] == "undefined") return;
 			return input => {
 				const context = new Context(input, globals);
-				return Promise.resolve(actions[action](context)).then(context => ({
-					...context.result,
-				}));
+
+				return Promise.resolve(actions[action](context)).then(
+					context => context.output
+				);
 			};
 		},
 	});

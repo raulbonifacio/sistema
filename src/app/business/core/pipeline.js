@@ -4,6 +4,10 @@ function pipeline(...middlewares) {
 		throw new Error("All middlewares in the pipeline should be functions.");
 
 	return (context, followUp = function () {}) => {
+
+		if (typeof followUp != "function")
+			throw new Error(`The followUp must be a function. Received: ${followUp}.`);
+
 		const stack = [...middlewares];
 
 		let previousMiddleware = null;
@@ -18,9 +22,6 @@ function pipeline(...middlewares) {
 				return middleware(context, (stop) => stop || next(stack.shift()));
 			}
 		};
-
-		if (typeof followUp != "function")
-			throw new Error(`The followUp must be a function. Received: ${followUp}.`);
 
 		return Promise.resolve(next(stack.shift())).then(followUp).then(() => context);
 	};
