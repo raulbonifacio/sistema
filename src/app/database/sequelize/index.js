@@ -50,7 +50,7 @@ Object.keys(exports.models).forEach(modelName => {
 
 exports.sequelize = sequelize;
 exports.Sequelize = Sequelize;
-exports.transaction = scope =>
-	cls.getNamespace(SEQUELIZE_CLS_NAMESPACE).get("transaction")
-		? scope(exports)
-		: sequelize.transaction(scope.bind(null, exports));
+exports.transaction = async scope =>
+	(await cls.getNamespace(SEQUELIZE_CLS_NAMESPACE).get("transaction"))
+		? scope(exports.models)
+		: sequelize.transaction(scope.bind(null, exports.models));
