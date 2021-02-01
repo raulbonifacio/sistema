@@ -2,6 +2,9 @@ const Context = require("./context");
 
 function facade(actions = {}, globals = {}) {
 
+	if (typeof actions != "object")
+		throw new Error(`The actions should be an Object. Received ${globals}.`);
+
 	if (typeof globals != "object")
 		throw new Error(`The globals should be an Object. Received ${globals}.`);
 
