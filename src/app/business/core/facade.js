@@ -15,7 +15,7 @@ function facade(actions = {}, globals = {}) {
 
 	return new Proxy(actions, {
 		get(actions, action) {
-			if (typeof actions[action] == "undefined") return;
+			if (typeof actions[action] != "function") return;
 			return (input, overrides = {}) => {
 				const context = new Context(input, { ...globals, ...overrides });
 				return Promise.resolve(actions[action](context)).then(
