@@ -4,11 +4,12 @@ const express = require("express");
 const { PORT } = process.env;
 
 const configurers = [
+	require("./configurers/pug-configurer"),
+	require("./configurers/static-configurer"),
 	require("./configurers/body-parser-configurer"),
 	require("./configurers/session-configurer"),
 	require("./configurers/csrf-configurer"),
 	require("./configurers/routes-configurer"),
-	require("./configurers/pug-configurer"),
 ];
 
 /**
