@@ -1,6 +1,7 @@
 const businessFacade = require("../../../business");
 
 exports.login = async function (request, response) {
+	if (request.session.user) return response.redirect("/");
 
 	const {
 		data,
@@ -11,9 +12,8 @@ exports.login = async function (request, response) {
 	if (hasErrors) {
 		response.redirectBackWithErrors(errors);
 	} else {
-		console.log(data);
 		request.session.user = data.user;
-		response.redirect("/dashboard");
+		response.redirect("/");
 	}
 };
 
