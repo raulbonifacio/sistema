@@ -1,5 +1,4 @@
 const { Router } = require("express");
-
 const controllers = require("../controllers");
 const middlewares = require("../middlewares");
 
@@ -8,6 +7,7 @@ const middlewares = require("../middlewares");
  * for the application.
  */
 async function routesConfigurer(app) {
+
 	const router = new Router();
 
 	router.use(middlewares);

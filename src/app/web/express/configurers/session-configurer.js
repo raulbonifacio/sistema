@@ -22,7 +22,7 @@ async function sessionConfigurer(app) {
 			store,
 			resave: false,
 			secret: SECRET,
-			saveUninitialized: false,
+			saveUninitialized: true,
 		})
 	);
 }

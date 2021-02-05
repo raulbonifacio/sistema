@@ -3,7 +3,7 @@
  * the application.
  */
 async function pugConfigurer(app) {
-	app.set("views", "src/assets/views");
+	app.set("views", "src/assets/views/pages");
 	app.set("view engine", "pug");
 	app.locals.basedir = "src/assets/views";
 }

@@ -1,12 +1,11 @@
-
 const express = require("express");
 
 /**
- * This function configures the Pug templating engine in
- * the application.
+ * This function configurers the static folder
+ * for serving files.
  */
-async function pugConfigurer(app) {
+async function staticConfigurer(app) {
 	app.use(express.static("src/public"));
 }
 
-module.exports = pugConfigurer;
+module.exports = staticConfigurer;
