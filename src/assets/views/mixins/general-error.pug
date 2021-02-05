@@ -1,0 +1,5 @@
+
+mixin general-error
+	if errors && errors.general
+		.border.border-danger.rounded.py-4
+			.text-danger.text-center= errors.general
