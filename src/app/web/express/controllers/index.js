@@ -10,4 +10,9 @@ router.get("/dashboard", dashboardController.index);
 router.get("/login", authenticationController.login);
 router.get("/register", authenticationController.register);
 
+router.get("/fixed-expenses/new", (_, response) => { 
+
+	response.render("pages/fixed-expenses/new/index.pug");
+});
+
 module.exports = router;
