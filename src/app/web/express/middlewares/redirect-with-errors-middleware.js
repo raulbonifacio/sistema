@@ -2,16 +2,16 @@
  * This middleware provides the `redirectBack` method on the response
  * object. It requires the flashedDataMiddleware to be setup first.
  */
-
-function redirectWithErrorsMiddleware(request, response, next) {
-
-	const { previousPath = "/" } = request.flashed;
-
-	response.redirectBack = function () {
-		response.redirect(previousPath);
+function redirectWithErrorsMiddleware(_request, response, next) {
+	response.redirectBackWithErrors = function (errors) {
+		response.flash({ errors });
+		response.redirectBack();
 	};
 
-	response.flash({ previousPath: request.path });
+	response.redirectWithErrors = function (path, errors) {
+		response.flash({ errors });
+		response.redirect(path);
+	};
 
 	next();
 }

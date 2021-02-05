@@ -1,16 +1,14 @@
-const flashedDataSymbol = Symbol("flashedData");
-
 function flashedDataMiddleware(request, response, next) {
-	const flashed = request.session[flashedDataSymbol] || {};
+	const flashed = request.session._flashedData || {};
 
 	request.flashed = flashed;
-	request.session[flashedDataSymbol] = {};
+	request.session._flashedData = {};
 
 	response.locals.flashed = flashed;
 	response.flash = function (data) {
-		request.session[flashedDataSymbol] = {
+		request.session._flashedData = {
 			...data,
-			...request.session[flashedDataSymbol],
+			...request.session._flashedData,
 		};
 	};
 
