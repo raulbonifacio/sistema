@@ -1,10 +1,11 @@
 const businessFacade = require("../../../business");
 
+const DASHBOARD = "/app/dashboard";
+
 const loginController = {
 
 	async login(request, response) {
-		if (request.session.user) return response.redirect("/app/dashboard");
-
+		if (request.session.user) return response.redirect(DASHBOARD);
 		const {
 			data,
 			errors,
@@ -15,12 +16,12 @@ const loginController = {
 			response.redirectBackWithErrors(errors);
 		} else {
 			request.session.user = data.user;
-			response.redirect("/");
+			response.redirect(DASHBOARD);
 		}
 	},
 
 	showLoginForm(request, response) {
-		if (request.session.user) return response.redirect("/app/dashboard");
+		if (request.session.user) return response.redirect(DASHBOARD);
 		response.render("login/index.pug", { csrfToken: request.csrfToken() });
 	},
 };
