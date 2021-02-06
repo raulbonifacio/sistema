@@ -3,5 +3,5 @@
  * the proper information.
  */
 exports.index = (_, response) => {
-	response.render("pages/dashboard/index");
+	response.render("dashboard/index");
 };

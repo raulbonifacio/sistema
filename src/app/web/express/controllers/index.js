@@ -1,12 +1,16 @@
 const { Router } = require("express");
 
+const app = require("./app");
+
 const logoutController = require("./logout-controller");
 const loginController = require("./login-controller");
 
-const router = Router();
+const root = Router();
 
-router.get("/login", loginController.showLoginForm);
-router.post("/login", loginController.login);
-router.post("/logout", logoutController.logout);
+root.use("/app", app);
 
-module.exports = router;
+root.get("/login", loginController.showLoginForm);
+root.post("/login", loginController.login);
+root.post("/logout", logoutController.logout);
+
+module.exports = root;
