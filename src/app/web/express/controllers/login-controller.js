@@ -3,7 +3,7 @@ const businessFacade = require("../../../business");
 const loginController = {
 
 	async login(request, response) {
-		if (request.session.user) return response.redirect("/");
+		if (request.session.user) return response.redirect("/app/dashboard");
 
 		const {
 			data,
@@ -20,7 +20,7 @@ const loginController = {
 	},
 
 	showLoginForm(request, response) {
-		if (request.session.user) return response.redirect("/");
+		if (request.session.user) return response.redirect("/app/dashboard");
 		response.render("login/index.pug", { csrfToken: request.csrfToken() });
 	},
 };
