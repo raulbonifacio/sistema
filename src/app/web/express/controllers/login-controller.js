@@ -1,4 +1,4 @@
-const businessFacade = require("../../../business");
+const { businessFacade } = require("../../../business");
 
 const DASHBOARD = "/app/dashboard";
 
