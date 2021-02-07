@@ -55,7 +55,7 @@ const stringValidators = {
 	 * This function returns true if the provided
 	 * string represents a boolean.
 	 */
-	epresentsABoolean(value) {
+	isABoolean(value) {
 		return /^(false|true)$/.test(value);
 	},
 
@@ -68,14 +68,4 @@ const stringValidators = {
 	},
 };
 
-module.exports = new Proxy(stringValidators, {
-	get(stringValidators, validation) {
-		return (string, ...args) => {
-			if (typeof string != "string") {
-				throw new Error(`Expected 'string'. Received ${typeof string}.`);
-			}
-
-			return stringValidators[validation](string, ...args);
-		};
-	},
-});
+module.exports = stringValidators;
