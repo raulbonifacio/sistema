@@ -24,10 +24,8 @@
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"express-session": "^1.17.1",
-		"jquery": "^3.5.1",
 		"mariadb": "^2.5.2",
 		"method-override": "^3.0.0",
-		"mysql2": "^2.2.5",
 		"nodemon": "^2.0.6",
 		"pug": "^3.0.0",
 		"sequelize": "^6.3.5"
@@ -35,7 +33,6 @@
 	"devDependencies": {
 		"css-loader": "^5.0.1",
 		"file-loader": "^6.2.0",
-		"open": "^7.3.0",
 		"sass": "^1.29.0",
 		"sass-loader": "^10.1.0",
 		"sequelize-cli": "^6.2.0",
